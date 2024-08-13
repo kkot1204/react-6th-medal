@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function App() {
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState("");
+  const [countryName, setCountryName] = useState("");
   const [gold, setGold] = useState(0);
   const [silver, setSilver] = useState(0);
   const [bronze, setBronze] = useState(0);
@@ -12,10 +12,9 @@ function App() {
   function onSubmit(event) {
     event.preventDefault();
 
-    console.log(country, gold, silver, bronze);
     setCountries([
       {
-        country,
+        countryName,
         gold,
         silver,
         bronze,
@@ -23,10 +22,44 @@ function App() {
       ...countries,
     ]);
 
-    setCountry("");
+    setCountryName("");
     setGold(0);
     setSilver(0);
     setBronze(0);
+  }
+
+  function onUpdate() {
+    const targetCountry = countries.find(
+      (country) => countryName === country.countryName
+    );
+
+    const newCountries = countries.map((country) => {
+      if (country.countryName === targetCountry.countryName) {
+        const newCountry = {
+          countryName,
+          gold,
+          silver,
+          bronze,
+        };
+        return newCountry;
+      }
+      return country;
+    });
+
+    console.log(targetCountry);
+
+    setCountries(newCountries);
+  }
+
+  function onDelete(countryName) {
+    const filteredCountries = countries.filter((country) => {
+      if (countryName === country.countryName) {
+        return false;
+      }
+      return true;
+    });
+
+    setCountries(filteredCountries);
   }
 
   return (
@@ -36,8 +69,8 @@ function App() {
         <input
           type="text"
           name="country"
-          value={country}
-          onChange={(event) => setCountry(event.target.value)}
+          value={countryName}
+          onChange={(event) => setCountryName(event.target.value)}
         />
         <input
           type="number"
@@ -58,13 +91,19 @@ function App() {
           onChange={(event) => setBronze(event.target.value)}
         />
         <button type="submit">국가 추가</button>
-        <button type="button">업데이트</button>
+        <button type="button" onClick={onUpdate}>
+          업데이트
+        </button>
       </form>
       <div>
         {countries.map((country) => (
-          <p key={country.country}>
-            {country.country} {country.gold} {country.silver} {country.bronze}
-          </p>
+          <div key={country.countryName}>
+            <p>
+              {country.countryName} {country.gold} {country.silver}{" "}
+              {country.bronze}
+            </p>
+            <button onClick={() => onDelete(country.countryName)}>삭제</button>
+          </div>
         ))}
       </div>
     </div>
