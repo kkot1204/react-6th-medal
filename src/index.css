@@ -7,4 +7,104 @@
   border-radius: 8px;
 }
 
-/* 주석 블록 */
+body {
+  font-family: Noto Sans KR, Arial, sans-serif;
+  background-color: rgb(216, 237, 255);
+  background-image: url('https://asset-prod.france.fr/Eiffel_Tower_at_sunset_in_Paris_France_Romantic_travel_background_Man79_Adobe_Stock_8aa81830ce.jpeg');
+  background-size: cover;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  /* 브라우저마다 고유의 마진 패딩 값이 있는데
+  이를 0으로 만들어야 위치 잡기가 용이하다 */
+}
+
+.root {
+  display: block;
+  /* 각 요소가 줄바꿈된다 
+  inline 한 줄에 나열, none 공간 사라짐*/
+  unicode-bidi: isolate;
+  /* 문서의 양방향 텍스트 처리 방법을 설정 */
+}
+.container {
+  /* background-color: green; */
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 10px rgb(110, 137, 212);
+}
+
+h1 {
+  color: rgba(18, 47, 179, 0.76);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  /* 컨텐츠들 사이 간격을 균등하게 */
+  margin-bottom: 20px;
+  gap: 10px;
+  align-items: flex-end;
+  /* 해당 영역 안에서 밑을 기준으로 배치 */
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  /* 아이템이 세로방향으로 흐른다. 상하로.
+  이것은 row 양옆 흐르기가 기본값 */
+  align-items: center;
+}
+
+.input-field label {
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: hsl(0, 91%, 66%);
+}
+
+input[type=text], input[type=number] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.button-group {
+  flex-shrink: 0;
+  display: flex;
+  gap: 10px;
+  align-items: end;
+}
+
+button {
+  background-color: rgb(250, 118, 118);
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  color: #ffffff;
+  align-self: center;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-size: 12px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  /* 모든 언어가 왼쪽에서 오른쪽 
+  위에서 아래로 쓰는 것은 아니기 때문에, 
+  만약 브라우저에서 아랍어로 전환하는 경우는 
+  아랍어는 오른쪽에서 왼쪽으로 작성하는 언어이기 때문에 
+  오른쪽에 공백을 추가합니다. */
+
+}
