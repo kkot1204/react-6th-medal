@@ -60,7 +60,13 @@ function App() {
         <button type="submit">국가 추가</button>
         <button type="button">업데이트</button>
       </form>
-      <div></div>
+      <div>
+        {countries.map((country) => (
+          <p key={country.country}>
+            {country.country} {country.gold} {country.silver} {country.bronze}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
